@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | My Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .profile-header {
+            background-image: linear-gradient(to right, #3B82F6, #1D4ED8);
+        }
+        .tab-active {
+            border-bottom: 3px solid #3B82F6;
+            color: #3B82F6;
+            font-weight: 500;
+        }
+        .verification-badge {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #10B981;
+        }
+        .history-item:hover {
+            transform: translateX(5px);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .rating-star {
+            transition: all 0.2s ease;
+        }
+        .rating-star:hover {
+            transform: scale(1.2);
+        }
+        .animate-verification {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation (consistent with other pages) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">My Courier</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Dashboard</a>
+                    <a href="send.html" class="text-gray-600 hover:text-blue-600 transition">Send</a>
+                    <a href="pickup.html" class="text-gray-600 hover:text-blue-600 transition">Pickup</a>
+                    <a href="tracking.html" class="text-gray-600 hover:text-blue-600 transition">Track</a>
+                    <a href="profile.html" class="text-blue-600 font-medium">Profile</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <section class="profile-header text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="relative mb-6 md:mb-0 md:mr-8">
+                    <div class="w-32 h-32 rounded-full bg-white flex items-center justify-center shadow-xl">
+                        <i class="fas fa-user text-blue-500 text-5xl"></i>
+                    </div>
+                    <div class="absolute bottom-0 right-0 verification-badge w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check text-white text-xs"></i>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl font-bold mb-2">Alex Johnson</h1>
+                    <div class="flex items-center justify-center md:justify-start mb-4">
+                        <div class="flex text-yellow-300 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-blue-100">4.7 (42 reviews)</span>
+                    </div>
+                    <p class="max-w-lg mb-4 text-blue-100">Member since June 2021 • 28 deliveries completed</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Verified ID</span>
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Premium Member</span>
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Fast Responder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Tabs -->
+    <section class="bg-white border-b">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex overflow-x-auto">
+                <a href="#personal" class="tab-active px-6 py-4 text-center whitespace-nowrap">
+                    <i class="fas fa-user mr-2"></i> Personal
+                </a>
+                <a href="#history" class="px-6 py-4 text-center whitespace-nowrap text-gray-600 hover:text-blue-600 transition">
+                    <i class="fas fa-history mr-2"></i> History
+                </a>
+                <a href="#ratings" class="px-6 py-4 text-center whitespace-nowrap text-gray-600 hover:text-blue-600 transition">
+                    <i class="fas fa-star mr-2"></i> Ratings
+                </a>
+                <a href="#safety" class="px-6 py-4 text-center whitespace-nowrap text-gray-600 hover:text-blue-600 transition">
+                    <i class="fas fa-shield-alt mr-2"></i> Safety
+                </a>
+                <a href="#settings" class="px-6 py-4 text-center whitespace-nowrap text-gray-600 hover:text-blue-600 transition">
+                    <i class="fas fa-cog mr-2"></i> Settings
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Tab Content -->
+    <section id="personal" class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Personal Details -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Personal Details</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-gray-500 text-sm mb-1">Full Name</label>
+                            <p class="font-medium">Alex Johnson</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 text-sm mb-1">Email</label>
+                            <p class="font-medium">alex.johnson@example.com</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 text-sm mb-1">Phone</label>
+                            <p class="font-medium">+1 (555) 123-4567</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 text-sm mb-1">Address</label>
+                            <p class="font-medium">123 Main St, Apt 4B, New York, NY 10001</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 text-sm mb-1">Member Since</label>
+                            <p class="font-medium">June 15, 2021</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification Status -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Verification Status</h2>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="flex items-start mb-6">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Identity Verified</h3>
+                                <p class="text-gray-600 text-sm">Government ID confirmed on Aug 12, 2021</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-6">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Phone Verified</h3>
+                                <p class="text-gray-600 text-sm">Mobile number confirmed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 animate-verification">
+                                <i class="fas fa-badge-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Premium Member</h3>
+                                <p class="text-gray-600 text-sm">Get verified faster and earn trust badges</p>
+                                <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+                                    Upgrade Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8">Your Activity</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">28</div>
+                    <p class="text-gray-600">Deliveries Completed</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">4.7</div>
+                    <p class="text-gray-600">Average Rating</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">96%</div>
+                    <p class="text-gray-600">Success Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Deliveries -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Recent Deliveries</h2>
+                <a href="#history" class="text-blue-600 hover:text-blue-800 text-sm font-medium">View All</a>
+            </div>
+            <div class="space-y-4">
+                <div class="history-item bg-gray-50 hover:bg-blue-50 p-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold">Documents to Chicago</h3>
+                            <p class="text-gray-600 text-sm">Delivered on Oct 15, 2023</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-300 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm">5.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="history-item bg-gray-50 hover:bg-blue-50 p-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold">Gift Package to Boston</h3>
+                            <p class="text-gray-600 text-sm">Delivered on Oct 8, 2023</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-300 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm">4.5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="history-item bg-gray-50 hover:bg-blue-50 p-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold">Electronics to Miami</h3>
+                            <p class="text-gray-600 text-sm">Delivered on Sep 28, 2023</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-300 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm">5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (consistent with other pages) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">My Courier</h3>
+                    <p class="text-gray-400">Connecting senders with travelers for fast, affordable deliveries.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="send.html" class="text-gray-400 hover:text-white transition">Send Package</a></li>
+                        <li><a href="pickup.html" class="text-gray-400 hover:text-white transition">Become Traveler</a></li>
+                        <li><a href="tracking.html" class="text-gray-400 hover:text-white transition">Track Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Safety</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Insurance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Download App</h4>
+                    <div class="space-y-3">
+                        <button class="flex items-center bg-black text-white px-4 py-2 rounded-lg w-full">
+                            <i class="fab fa-apple mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Download on the</div>
+                                <div class="font-medium">App Store</div>
+                            </div>
+                        </button>
+                        <button class="flex items-center bg-black text-white px-4 py-2 rounded-lg w-full">
+                            <i class="fab fa-google-play mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Get it on</div>
+                                <div class="font-medium">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 My Courier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('[href^="#"]').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active tab styling
+                document.querySelectorAll('[href^="#"]').forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('text-gray-600', 'hover:text-blue-600');
+                });
+                this.classList.add('tab-active');
+                this.classList.remove('text-gray-600', 'hover:text-blue-600');
+                
+                // In a real app, this would load the tab content via AJAX
+                alert(`Loading ${this.textContent.trim()} tab...`);
+            });
+        });
+
+        // Rating stars interaction
+        document.querySelectorAll('.rating-star').forEach(star => {
+            star.addEventListener('mouseenter', function() {
+                const rating = this.dataset.rating;
+                highlightStars(rating);
+            });
+        });
+
+        function highlightStars(rating) {
+            document.querySelectorAll('.rating-star').forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('text-yellow-400');
+                    star.classList.remove('text-gray-300');
+                } else {
+                    star.classList.add('text-gray-300');
+                    star.classList.remove('text-yellow-400');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
