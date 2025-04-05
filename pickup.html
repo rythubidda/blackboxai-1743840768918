@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Traveler | My Courier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        .btn-grow:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .travel-option {
+            transition: all 0.3s ease;
+        }
+        .travel-option:hover {
+            transform: translateY(-3px);
+        }
+        .travel-option.selected {
+            border-color: #3B82F6;
+            background-color: #EFF6FF;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation (consistent with other pages) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">My Courier</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Dashboard</a>
+                    <a href="send.html" class="text-gray-600 hover:text-blue-600 transition">Send</a>
+                    <a href="pickup.html" class="text-blue-600 font-medium">Pickup</a>
+                    <a href="tracking.html" class="text-gray-600 hover:text-blue-600 transition">Track</a>
+                    <a href="profile.html" class="text-gray-600 hover:text-blue-600 transition">Profile</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Earn While You Travel</h1>
+                <p class="text-xl mb-8">Deliver packages on your existing trips and make extra money</p>
+                <div class="flex space-x-4">
+                    <a href="#travelForm" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 btn-grow">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Form Section -->
+    <section id="travelForm" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-gray-50 rounded-xl p-8 shadow-md">
+                <h2 class="text-3xl font-bold text-center mb-8">Enter Your Travel Details</h2>
+                
+                <form id="pickupForm" class="space-y-8">
+                    <!-- Travel Options -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-4">Travel Mode</label>
+                        <div class="grid md:grid-cols-4 gap-4">
+                            <!-- Train Option -->
+                            <label class="travel-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 transition">
+                                <input type="radio" name="travelMode" value="train" class="hidden" data-show="pnrField">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-train text-blue-600 text-xl"></i>
+                                    </div>
+                                    <span class="font-medium">Train</span>
+                                </div>
+                            </label>
+                            
+                            <!-- Flight Option -->
+                            <label class="travel-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 transition">
+                                <input type="radio" name="travelMode" value="flight" class="hidden" data-show="pnrField">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-plane text-blue-600 text-xl"></i>
+                                    </div>
+                                    <span class="font-medium">Flight</span>
+                                </div>
+                            </label>
+                            
+                            <!-- Bus Option -->
+                            <label class="travel-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 transition">
+                                <input type="radio" name="travelMode" value="bus" class="hidden">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-bus text-blue-600 text-xl"></i>
+                                    </div>
+                                    <span class="font-medium">Bus</span>
+                                </div>
+                            </label>
+                            
+                            <!-- Personal Vehicle -->
+                            <label class="travel-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 transition">
+                                <input type="radio" name="travelMode" value="car" class="hidden">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                        <i class="fas fa-car text-blue-600 text-xl"></i>
+                                    </div>
+                                    <span class="font-medium">Car</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- PNR Field (Hidden by default) -->
+                    <div id="pnrField" class="hidden fade-in">
+                        <label for="pnr" class="block text-gray-700 font-medium mb-2">PNR/Ticket Number</label>
+                        <input type="text" id="pnr" name="pnr"
+                            class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-700"
+                            placeholder="Enter your PNR or ticket number">
+                    </div>
+
+                    <!-- Travel Details -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fromCity" class="block text-gray-700 font-medium mb-2">From City</label>
+                            <input type="text" id="fromCity" name="fromCity" required
+                                class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-700"
+                                placeholder="Departure city">
+                        </div>
+                        <div>
+                            <label for="toCity" class="block text-gray-700 font-medium mb-2">To City</label>
+                            <input type="text" id="toCity" name="toCity" required
+                                class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-700"
+                                placeholder="Destination city">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="departureDate" class="block text-gray-700 font-medium mb-2">Departure Date</label>
+                            <input type="date" id="departureDate" name="departureDate" required
+                                class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-700">
+                        </div>
+                        <div>
+                            <label for="departureTime" class="block text-gray-700 font-medium mb-2">Departure Time</label>
+                            <input type="time" id="departureTime" name="departureTime" required
+                                class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-700">
+                        </div>
+                    </div>
+
+                    <!-- Package Preferences -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Package Preferences</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="prefSmall" class="h-5 w-5 text-blue-600 rounded" checked>
+                                <span>Small (up to 5kg)</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="prefMedium" class="h-5 w-5 text-blue-600 rounded" checked>
+                                <span>Medium (5-15kg)</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="prefLarge" class="h-5 w-5 text-blue-600 rounded">
+                                <span>Large (15-25kg)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300 btn-grow">
+                        Find Packages to Deliver
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Become a Traveler?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-money-bill-wave text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Earn Extra Money</h3>
+                    <p class="text-gray-600">Make $20-$100 per delivery on your existing trips</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-user-shield text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Verified Senders</h3>
+                    <p class="text-gray-600">All senders are verified with background checks</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Flexible Schedule</h3>
+                    <p class="text-gray-600">Choose deliveries that fit your travel plans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (consistent with other pages) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">My Courier</h3>
+                    <p class="text-gray-400">Connecting senders with travelers for fast, affordable deliveries.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="send.html" class="text-gray-400 hover:text-white transition">Send Package</a></li>
+                        <li><a href="pickup.html" class="text-gray-400 hover:text-white transition">Become Traveler</a></li>
+                        <li><a href="tracking.html" class="text-gray-400 hover:text-white transition">Track Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Safety</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Insurance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Download App</h4>
+                    <div class="space-y-3">
+                        <button class="flex items-center bg-black text-white px-4 py-2 rounded-lg w-full">
+                            <i class="fab fa-apple mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Download on the</div>
+                                <div class="font-medium">App Store</div>
+                            </div>
+                        </button>
+                        <button class="flex items-center bg-black text-white px-4 py-2 rounded-lg w-full">
+                            <i class="fab fa-google-play mr-2 text-xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Get it on</div>
+                                <div class="font-medium">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 My Courier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Show/hide PNR field based on travel mode selection
+        document.querySelectorAll('input[name="travelMode"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const pnrField = document.getElementById('pnrField');
+                if (this.value === 'train' || this.value === 'flight') {
+                    pnrField.classList.remove('hidden');
+                    pnrField.classList.add('fade-in');
+                } else {
+                    pnrField.classList.add('hidden');
+                }
+            });
+        });
+
+        // Highlight selected travel option
+        document.querySelectorAll('.travel-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.travel-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+
+        // Form submission
+        document.getElementById('pickupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Finding matching packages... This would connect to backend in production');
+            // Redirect to matching packages page
+            window.location.href = 'tracking.html';
+        });
+    </script>
+</body>
+</html>
